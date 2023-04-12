@@ -4,7 +4,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-
+const db = require('./db');
 
 
 app.get('/welcome', (req, res) => {
@@ -12,7 +12,9 @@ app.get('/welcome', (req, res) => {
 })
 
 
+db.then(() => {
 
-app.listen(PORT,()=>{
-    console.log(`Server listening on ${PORT} `)
+    app.listen(PORT, () => console.log("Server listening on" + PORT));
 })
+    .catch((err) => console.log(err.message));   
+

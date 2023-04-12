@@ -16,9 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Appointment.init({
     stylist_id: DataTypes.INTEGER,
     client_id: DataTypes.INTEGER,
-    service_id: DataTypes.INTEGER,
-    date: DataTypes.STRING,
-    comments: DataTypes.STRING
+    service_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Appointment',
