@@ -10,13 +10,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       stylist_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Stylists",
+          key:"id"
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       client_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Clients",
+          key:"id"
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       service_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Services",
+          key:"id"
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       date: {
         type: Sequelize.STRING
