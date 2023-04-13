@@ -12,6 +12,11 @@ app.get('/welcome', (req, res) => {
 })
 
 
+
+const router = require('./router');
+app.use(router);
+
+
 db.then(() => {
 
     app.listen(PORT, () => console.log("Server listening on" + PORT));
