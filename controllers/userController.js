@@ -1,18 +1,23 @@
 const {User, Role, UserRole, Client, Appointment, Service, Stylist} = require('../models');
 const userController = {}
 
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 userController.createUser = async(req,res)=>{
 
     try{
         const {name, surname, email, password, birth_date, phone} = req.body;
 
+        const encryptedPassword = bcrypt.hashSync(password,12);
+
         const newUser = {
 
             name,
             surname,
             email,
-            password,
+            password: encryptedPassword,
             birth_date,
             phone
         }
@@ -56,19 +61,28 @@ userController.login = async(req,res)=>{
         if(!user){
             return res.send("Wrong credentials")
         }
+        const isMatch = bcrypt.compareSync(password,user.password);
 
         if(!isMatch){
             return res.send("Wrong credentials")
         }
 
-        return res.json(token)
+        const userRoles = user.Roles;
+
+        const token = jwt.sign(
+            {
+                userId: user.id,
+                email: user.email,
+                roles: userRoles.map((role)=> role.privilege)
+            },
+            'secreto',
+            {expiresIn: '2h'}
+        );
+    return res.json(token)
     } catch (error) {
         return res.status(500).send(error.message)
     }
 }
-
-
-
 
 
 
