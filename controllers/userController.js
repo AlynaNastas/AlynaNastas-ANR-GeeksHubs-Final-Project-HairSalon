@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Role, UserRole, Client, Appointment, Service, Stylist} = require('../models');
 const userController = {}
 
 
@@ -40,6 +40,33 @@ userController.createUser = async(req,res)=>{
         )
     }
 }
+
+userController.login = async(req,res)=>{
+    try {
+        const{ email, password } = req.body;
+
+        const user = await User.findOne(
+            {
+                where:{
+                    email: email
+                },
+                include: [Role]
+            }
+        );
+        if(!user){
+            return res.send("Wrong credentials")
+        }
+
+        if(!isMatch){
+            return res.send("Wrong credentials")
+        }
+
+        return res.json(token)
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 
 
 

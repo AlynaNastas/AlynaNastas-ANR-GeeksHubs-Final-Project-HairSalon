@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         {
           foreignKey:"user_id"
         })
-      Stylist.belongsTo(models.Speciality,
+      Stylist.belongsTo(models.Service,
         {
           foreignKey:"services_id"
         })
