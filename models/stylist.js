@@ -15,18 +15,14 @@ module.exports = (sequelize, DataTypes) => {
         {
           foreignKey:"user_id"
         })
-      Stylist.belongsTo(models.Service,
-        {
-          foreignKey:"services_id"
-        })
+
       Stylist.hasMany(models.Appointment,{
           foreignKey: 'stylist_id'
       });
     }
   }
   Stylist.init({
-    user_id: DataTypes.INTEGER,
-    service_id: DataTypes.INTEGER
+    user_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Stylist',

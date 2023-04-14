@@ -5,9 +5,9 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Roles',
     [
-        {id: 1, privilege: "Admin", updatedAt: "2023-04-04", createdAt: "2023-01-12"},
-        {id: 2, privilege: "Stylist",updatedAt: "2023-04-04", createdAt: "2023-02-21"},
-        {id: 3, privilege: "User", updatedAt: "2023-04-04", createdAt: "2023-03-04"},
+        {id: 1, privilege: "Admin", updatedAt: new Date(), createdAt: new Date()},
+        {id: 2, privilege: "Stylist",updatedAt: new Date(), createdAt: new Date()},
+        {id: 3, privilege: "User", updatedAt: new Date(), createdAt: new Date()},
   
     ], {});
   },

@@ -3,11 +3,10 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Stylist',
+    await queryInterface.bulkInsert('Stylists',
     [
-      {id: 1, user_id: 1, updatedAt: "2023-03-04", createdAt: "2023-01-12"},
-      {id: 2, user_id: 2, updatedAt: "2023-03-04", createdAt: "2023-01-12"},
-
+      {id: 1, user_id: 1, updatedAt: new Date(), createdAt: new Date()},
+      {id: 2, user_id: 2, updatedAt: new Date(), createdAt: new Date()},
 
     ], {});
   },

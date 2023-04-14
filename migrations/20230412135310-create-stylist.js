@@ -15,13 +15,7 @@ module.exports = {
           model: "Users",
           key:"id"
         } 
-      },
-      service_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Services",
-          key:"id"
-        } 
+    
       },
       createdAt: {
         allowNull: false,
