@@ -7,7 +7,7 @@ const verifyToken = (req, res, next) => {
         if (!authorization) {
             return res.send('Invalid token');
         }
-        const [ token ] = authorization.split(" ");
+        const [ strategy, token ] = authorization.split(" ");
 
         const decoded = jwt.verify(token, 'key');
 

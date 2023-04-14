@@ -53,7 +53,7 @@ userController.login = async(req,res)=>{
                 include: [Role]
             }
         );
-        
+
         if(!user){
             return res.send("Wrong credentials")
         }
@@ -196,7 +196,7 @@ userController.getAppointment = async (req, res) => {
     try {
     const userAppointment = await Appointment.findAll({
     where: {
-        patient_id: req.userId,
+        client_id: req.userId,
     },
     include: [
         {
@@ -221,18 +221,11 @@ userController.getAppointment = async (req, res) => {
         },
     });
 
-
     return res.json(userAppointment);
-} catch (erro) {
-    return res.status(500).json(    
-            {
-            success: false,
-            message:"Something went wrong",
-            error_message: error.message
-            }
-        )
-    }
+} catch (error) {
+    return res.status(500).send(error.message);
 }
+};
 
 
 //ADMIN//
@@ -294,9 +287,9 @@ userController.getAllUsers = async (req, res) => {
                 role_id
             }
             
-            const UsersRoles = await UserRole.create(addRole)
+            const uRoles = await UserRole.create(addRole)
     
-            return res.json(UsersRoles);
+            return res.json(uRoles);
         } catch (erro) {
             return res.status(500).json(    
                     {

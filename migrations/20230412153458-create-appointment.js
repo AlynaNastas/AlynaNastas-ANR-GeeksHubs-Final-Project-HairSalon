@@ -15,8 +15,8 @@ module.exports = {
           model: "Stylists",
           key:"id"
         },
-         // onUpdate: 'CASCADE',
-         // onDelete: 'CASCADE'
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
       },
       client_id: {
         type: Sequelize.INTEGER,
