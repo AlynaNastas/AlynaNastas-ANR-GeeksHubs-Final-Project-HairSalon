@@ -1,6 +1,6 @@
 const isStylist = (req, res, next) => {
     try {
-        const isStylist = req.roles.map((role) => role === 'Styilist').includes(true);
+        const isStylist = req.roles.map((role) => role === 'Stylist').includes(true);
     if (isStylist) {
         next();
         } else {

@@ -250,7 +250,7 @@ userController.getAllUsers = async (req, res) => {
         }
     }
 
-    //See all Stylists//
+    //See all Stylists ad Admin//
 
     userController.getUser = async (req, res) => {
         try {

@@ -24,8 +24,8 @@ module.exports = {
           model: "Clients",
           key:"id"
         },
-         // onUpdate: 'CASCADE',
-         // onDelete: 'CASCADE'
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
       },
       service_id: {
         type: Sequelize.INTEGER,
@@ -33,8 +33,8 @@ module.exports = {
           model: "Services",
           key:"id"
         },
-        // onUpdate: 'CASCADE',
-        // onDelete: 'CASCADE'
+         onUpdate: 'CASCADE',
+         onDelete: 'CASCADE'
       },
       date: {
         type: Sequelize.STRING

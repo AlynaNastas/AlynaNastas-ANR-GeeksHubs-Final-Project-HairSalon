@@ -7,7 +7,8 @@ const userRoutes = require('./views/userRoutes');
 
 
 
-router.use('/', roleRoutes)
+router.use('/', roleRoutes);
 router.use('/', userRoutes);
+router.use('/', appointRoutes);
 
 module.exports = router;
