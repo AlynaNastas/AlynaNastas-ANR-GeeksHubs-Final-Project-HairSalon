@@ -74,9 +74,15 @@ userController.login = async(req,res)=>{
             'key',
             {expiresIn: '2h'}
         );
-    return res.json(token)
-    } catch (error) {
-        return res.status(500).send(error.message)
+        return res.json(token)
+    }catch (error) {
+        return res.status(500).json(    
+            {
+            success: false,
+            message:"Something went wrong",
+            error_message: error.message
+            }
+        )
     }
 }
 
@@ -142,10 +148,15 @@ userController.updateUser = async (req, res) => {
         if (!updateUSer) {
             return res.send('User not updated')
         }
-
         return res.send('User updated')
-    } catch (error) {
-        return res.status(500).send(error.message)
+    }catch (error) {
+        return res.status(500).json(    
+            {
+                success: false,
+                message:"Something went wrong",
+                error_message: error.message
+            }
+        )
     }
 }
 
@@ -222,10 +233,18 @@ userController.getAppointment = async (req, res) => {
     });
 
     return res.json(userAppointment);
-} catch (error) {
-    return res.status(500).send(error.message);
-}
-};
+        } catch (erro) {
+            return res.status(500).json(    
+                {
+                    success: false,
+                    message:"Something went wrong",
+                    error_message: error.message
+                }
+            )
+        }
+    }
+
+
 
 
 //ADMIN//

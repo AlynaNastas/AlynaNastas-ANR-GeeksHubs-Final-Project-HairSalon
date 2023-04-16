@@ -1,5 +1,4 @@
 const {Appointment} = require('../models');
-const appointment = require('../models/appointment');
 
 const appointController = {}
 
@@ -22,13 +21,20 @@ appointController.createAppoint = async(req, res) => {
             comments
         }
         const appointment = await Appointment.create(newAppointment)
-        return res.json(appointment)
-    } catch (error) {
-        return res.status(500).send(error.message)
+        return res.json(appointment);
+    } catch (erro) {
+        return res.status(500).json(    
+                {
+                success: false,
+                message:"Something went wrong",
+                error_message: error.message
+                }
+            )
+        }
     }
-};
 
-//Delete appointments Users and Stylists//
+
+//Delete appointments Uers and Stylists//
 
 
 
