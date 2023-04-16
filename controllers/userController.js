@@ -72,7 +72,7 @@ userController.login = async(req,res)=>{
                 roles: userRoles.map((role)=> role.privilege)
             },
             'key',
-            {expiresIn: '1h'}
+            {expiresIn: '2h'}
         );
     return res.json(token)
     } catch (error) {
@@ -250,7 +250,7 @@ userController.getAllUsers = async (req, res) => {
         }
     }
 
-    //See all Stylists ad Admin//
+    //See all Stylists and Admin//
 
     userController.getUser = async (req, res) => {
         try {

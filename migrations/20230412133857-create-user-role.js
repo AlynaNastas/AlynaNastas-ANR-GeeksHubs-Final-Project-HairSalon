@@ -16,7 +16,7 @@ module.exports = {
           key:"id"
         },
         onUpdate: 'CASCADE',
-        //onDelete: 'CASCADE'
+        onDelete: 'CASCADE'
       },
       role_id: {
         type: Sequelize.INTEGER,
@@ -25,7 +25,7 @@ module.exports = {
           key:"id"
         },
         onUpdate: 'CASCADE',
-        //onDelete: 'CASCADE'
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
