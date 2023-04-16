@@ -1,4 +1,4 @@
-const {Appointment} = require('../models');
+const {Appointment } = require('../models');
 
 const appointController = {}
 
@@ -38,32 +38,33 @@ appointController.createAppoint = async(req, res) => {
 
 
 
-appointController.deleteAppointment = async (req, res) => {
+/*appointController.deleteAppointment = async (req, res) => {
     try {
-        const { id } = req.params;
+        const appointId = req.params.id;
         const userId = req.userId;
         const userRoles = req.roles;
+        
 
         let appointment;
 
         if (userRoles.includes("Stylist")) {
             appointment = await Appointment.findOne({
                 where: {
-                    id: id,
+                    id: appointId,
                     stylist_id: userId
                 }
             });
         } else {
             appointment = await Appointment.findOne({
                 where: {
-                    id: id,
-                    client_id: userId
+                    id: appointId,
+                    client_id: clientId
                 }
             });
         }
 
         if (!appointment) {
-            return res.status(500).send('Appointment not found');
+            return res.status(501).send('Appointment not found');
         }
 
         await appointment.destroy();
@@ -73,7 +74,25 @@ appointController.deleteAppointment = async (req, res) => {
     } catch (error) {
         return res.status(500).send(error.message);
     }
-};
+};*/
+
+
+appointController.deleteAppointment = async(req, res) =>{
+    try {
+        const appointmentId = req.params.id;
+        const deleteAppoint = await Appointment.destroy({where: {id: appointmentId, client_id: req.userId}})
+        
+        return res.json({success:true, message: 'Successfuly canceled', appointment: deleteAppoint});
+    } catch (error) {
+        return res.status(500).json(    
+            {
+                success: false,
+                message:"Something went wrong",
+                error_message: error.message
+            }
+        )
+    }
+}
 
 
 
