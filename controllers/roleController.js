@@ -1,4 +1,4 @@
-const {Role , User } = require('../models');
+const {Role , User, Client, Appointment, Service } = require('../models');
 
 const roleController = {}
 
@@ -80,6 +80,31 @@ roleController.addRole = async(req,res)=>{
                 )
             }
         }
+
+
+    //Check Roles by id//
+
+    roleController.getUserRole = async(req, res) =>{
+        try {
+            const userId = req.params.id;
+    
+            const Userrole= await User.findByPk(userId,{
+                include:{all: true},
+                attributes: {exclude: ['password']}
+            })
+            return res.json(Userrole);
+        } catch (error) {
+            return res.status(500).json(    
+                    {
+                    success: false,
+                    message:"Something went wrong",
+                    error_message: error.message
+                    }
+                )
+            }
+        }
+    
+
     
 
 module.exports = roleController;

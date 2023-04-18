@@ -202,7 +202,7 @@ userController.getAppointment = async (req, res) => {
 
     //Check Roles by id//
 
-    userController.getUserRole = async(req, res) =>{
+    /*userController.getUserRole = async(req, res) =>{
         try {
             const userId = req.params.id;
     
@@ -220,7 +220,7 @@ userController.getAppointment = async (req, res) => {
                     }
                 )
             }
-        }
+        }*/
     
 
 

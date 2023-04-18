@@ -8,5 +8,6 @@ router.post('/admin/roles', verifyToken, isAdmin, roleController.addRole)
 
 router.get('/admin/users', verifyToken, isAdmin, roleController.getAllUsers)
 router.delete('/users/:id', verifyToken, isAdmin, roleController.deleteUser)
+router.get('/users/role/:id', verifyToken, isAdmin, roleController.getUserRole)
 
 module.exports = router;
