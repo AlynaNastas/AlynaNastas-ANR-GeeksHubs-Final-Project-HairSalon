@@ -1,228 +1,182 @@
-const {User, Role, UserRole, Client, Appointment, Service} = require('../models');
-const userController = {}
+const {
+  User,
+  Role,
+  UserRole,
+  Client,
+  Appointment,
+  Service,
+} = require("../models");
+const userController = {};
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
+userController.createUser = async (req, res) => {
+  try {
+    const { name, surname, email, password, birth_date, phone } = req.body;
 
-userController.createUser = async(req,res)=>{
+    const encryptedPassword = bcrypt.hashSync(password, 12);
 
-    try{
-        const {name, surname, email, password, birth_date, phone} = req.body;
+    const newUser = {
+      name,
+      surname,
+      email,
+      password: encryptedPassword,
+      birth_date,
+      phone,
+    };
+    const user = await User.create(newUser);
 
-        const encryptedPassword = bcrypt.hashSync(password,12);
+    await UserRole.create({
+      user_id: user.id,
+      role_id: 3,
+    });
 
-        const newUser = {
+    await Client.create({
+      id: user.id,
+      user_id: user.id,
+    });
 
-            name,
-            surname,
-            email,
-            password: encryptedPassword,
-            birth_date,
-            phone
-        }
-        const user = await User.create(newUser)
+    return res.json(user);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
-        await UserRole.create({
-            user_id : user.id,
-            role_id : 3
-        })
+userController.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-        await Client.create({
-            id: user.id,
-            user_id : user.id,
-        })
+    const user = await User.findOne({
+      where: {
+        email: email,
+      },
+      include: [Role],
+    });
 
-
-        return res.json(user)
-    }catch (error) {
-        return res.status(500).json(    
-            {
-            success: false,
-            message:"Something went wrong",
-            error_message: error.message
-            }
-        )
+    if (!user) {
+      return res.send("Wrong credentials");
     }
-}
+    const isMatch = bcrypt.compareSync(password, user.password);
 
-userController.login = async(req,res)=>{
-    try {
-        const{ email, password } = req.body;
-
-        const user = await User.findOne(
-            {
-                where:{
-                    email: email
-                },
-                include: [Role]
-            }
-        );
-
-        if(!user){
-            return res.send("Wrong credentials")
-        }
-        const isMatch = bcrypt.compareSync(password,user.password);
-
-        if(!isMatch){
-            return res.send("Wrong credentials")
-        }
-
-        const userRoles = user.Roles;
-
-        const token = jwt.sign(
-            {
-                userId: user.id,
-                email: user.email,
-                roles: userRoles.map((role)=> role.privilege)
-            },
-            'key',
-            {expiresIn: '2h'}
-        );
-        
-        return res.json(token)
-    }catch (error) {
-        return res.status(500).json(    
-            {
-            success: false,
-            message:"Something went wrong",
-            error_message: error.message
-            }
-        )
+    if (!isMatch) {
+      return res.send("Wrong credentials");
     }
-}
 
+    const userRoles = user.Roles;
 
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        email: user.email,
+        roles: userRoles.map((role) => role.privilege),
+      },
+      "key",
+      { expiresIn: "2h" }
+    );
 
-userController.profile = async(req, res) => {
-    try {
-        const userId = req.userId;
-        const user = await User.findByPk(userId)
+    return res.json(token);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
-        return res.json(user);
-    } catch (error) {
-        return res.status(500).json(    
-            {
-                success: false,
-                message:"Something went wrong",
-                error_message: error.message
-            }
-        )
-    }
-}
+userController.profile = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const user = await User.findByPk(userId);
+
+    return res.json(user);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
 userController.updateUser = async (req, res) => {
-    try {
-        const { name, surname, email, password, birth_date, phone } = req.body;
-        const userId = req.userId;
+  try {
+    const { name, surname, email, password, birth_date, phone } = req.body;
+    const userId = req.userId;
 
-        const encryptedPassword = bcrypt.hashSync(password, 12);
+    const encryptedPassword = bcrypt.hashSync(password, 12);
 
-        const updateUSer = await User.update(
-            {
+    const updateUSer = await User.update(
+      {
+        name,
+        surname,
+        email,
+        password: encryptedPassword,
+        birth_date,
+        phone,
+      },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
 
-            name,
-            surname,
-            email,
-            password: encryptedPassword,
-            birth_date,
-            phone
-
-            },
-            {
-                where: {
-                    id: userId
-                }
-            }
-        );
-
-        if (!updateUSer) {
-            return res.send('User not updated')
-        }
-        return res.send('User updated')
-    }catch (error) {
-        return res.status(500).json(    
-            {
-                success: false,
-                message:"Something went wrong",
-                error_message: error.message
-            }
-        )
+    if (!updateUSer) {
+      return res.send("User not updated");
     }
-}
+    return res.send("User updated");
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
-
-
-userController.getAppointment = async (req, res) => {
-    try {
+/*userController.seeAppointment = async (req, res) => {
+  try {
     const userAppointment = await Appointment.findAll({
-    where: {
+      where: {
         client_id: req.userId,
-    },
-    include: [
+      },
+      include: [
         {
-            model: Service,
-            attributes: { exclude: ['createdAt', 'updatedAt'] },
+          model: Service,
+          attributes: { exclude: ["createdAt", "updatedAt"] },
         },
-    {
-        model: Client,
-        include: [
         {
-            model: User,
-            attributes: ['name', 'surname'],
+          model: Client,
+          include: [
+            {
+              model: User,
+              attributes: ["name", "surname"],
+            },
+          ],
+          attributes: {
+            exclude: ["user_id", "role_id", "createdAt", "updatedAt"],
+          },
         },
-    ],
-        attributes: {
-            exclude: ['user_id', 'role_id', 'createdAt', 'updatedAt'],
-        },
-    },
-],
-    attributes: {
-        exclude: ['client_id', 'service_id'],
-        },
+      ],
+      attributes: {
+        exclude: ["client_id", "service_id"],
+      },
     });
 
     return res.json(userAppointment);
-        } catch (error) {
-            return res.status(500).json(    
-                {
-                    success: false,
-                    message:"Something went wrong",
-                    error_message: error.message
-                }
-            )
-        }
-    }
-
-
-
-
-//ADMIN//
-
-
-    //Check Roles by id//
-
-    /*userController.getUserRole = async(req, res) =>{
-        try {
-            const userId = req.params.id;
-    
-            const Userrole= await User.findByPk(userId,{
-                include:{all: true},
-                attributes: {exclude: ['password']}
-            })
-            return res.json(Userrole);
-        } catch (error) {
-            return res.status(500).json(    
-                    {
-                    success: false,
-                    message:"Something went wrong",
-                    error_message: error.message
-                    }
-                )
-            }
-        }*/
-    
-
-
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};*/
 
 module.exports = userController;

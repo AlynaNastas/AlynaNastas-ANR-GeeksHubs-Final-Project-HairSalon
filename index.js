@@ -1,26 +1,18 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const PORT =  process.env.PORT || 4000
-
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 
-const db = require('./db');
+const db = require("./db");
 
+app.get("/welcome", (req, res) => {
+    return res.send("Welcome to my app");
+});
 
-app.get('/welcome', (req, res) => {
-    return res.send("Welcome to my app")
-})
-
-
-
-const router = require('./router');
+const router = require("./router");
 app.use(router);
 
-
 db.then(() => {
-
     app.listen(PORT, () => console.log("Server listening on" + PORT));
-})
-    .catch((err) => console.log(err.message));   
-
+}).catch((err) => console.log(err.message));

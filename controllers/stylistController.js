@@ -1,78 +1,75 @@
-const { User, Role, UserRole, Client, Appointment, Service } = require('../models');
+const {
+  User,
+  Role,
+  UserRole,
+  Client,
+  Appointment,
+  Service,
+} = require("../models");
 
-const stylistController = {}
+const stylistController = {};
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 //Stylist see them own appointments//
 
 stylistController.getStylistApp = async (req, res) => {
-    try {
-
+  try {
     const stylistAppointment = await Appointment.findAll({
-        
-        include: [
+      include: [
+        {
+          model: Service,
+          attributes: { exclude: ["createdAt", "updatedAt"] },
+        },
+        {
+          model: Client,
+          include: [
             {
-                model: Service,
-                attributes: { exclude: ['createdAt', 'updatedAt'] },
+              model: User,
+              attributes: { exclude: ["id", "password", "updatedAt"] },
             },
-            {
-                model: Client,
-                include: [
-                {
-                    model: User,
-                    attributes: { exclude: ['id', 'password', 'updatedAt'] }
-            }],
+          ],
+        },
+      ],
+      attributes: {
+        exclude: ["client_id", "service_id"],
+      },
+    });
 
-            },
-        ],
-            attributes: {
-            exclude: ['client_id', 'service_id'],
-            },
-            })
+    return res.json(stylistAppointment);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
-            return res.json(stylistAppointment);
-        } catch (error) {
-            return res.status(500).json(    
-                {
-                    success: false,
-                    message:"Something went wrong",
-                    error_message: error.message
-                }
-            )
-        }
-    }
+//See all Stylists and Admin//
 
-
-    //See all Stylists and Admin//
-
-    stylistController.getUser = async (req, res) => {
-        try {
-            const stylists = await User.findAll({
-                include: [
-                    {
-                    model: Role,
-                    where: {
-                        privilege: "User",
-                        },
-                    },
-                ],
-                attributes: { exclude: ['password'] },
-            });
-            return res.json(stylists);
-        } catch (error) {
-            return res.status(500).json(    
-                    {
-                    success: false,
-                    message:"Something went wrong",
-                    error_message: error.message
-                    }
-                )
-            }
-        }
-    
-
+stylistController.getUser = async (req, res) => {
+  try {
+    const stylists = await User.findAll({
+      include: [
+        {
+          model: Role,
+          where: {
+            privilege: "User",
+          },
+        },
+      ],
+      attributes: { exclude: ["password"] },
+    });
+    return res.json(stylists);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
 module.exports = stylistController;
