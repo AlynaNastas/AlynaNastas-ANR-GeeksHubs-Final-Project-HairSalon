@@ -1,4 +1,4 @@
-const {Role} = require('../models');
+const {Role , User } = require('../models');
 
 const roleController = {}
 
@@ -45,5 +45,25 @@ roleController.addRole = async(req,res)=>{
         }
     }
 
+
+    roleController.getAllUsers = async (req, res) => {
+        try {
+            const users = await User.findAll({
+                attributes: { exclude: ['password'] }
+            });
+    
+            return res.json(users);
+        } catch (error) {
+            return res.status(500).json(    
+                    {
+                    success: false,
+                    message:"Something went wrong",
+                    error_message: error.message
+                    }
+                )
+            }
+        }
+    
+    
 
 module.exports = roleController;

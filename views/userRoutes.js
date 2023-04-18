@@ -13,8 +13,7 @@ router.get('/users/appointments', verifyToken, userController.getAppointment)
 router.get('/profile',verifyToken,userController.profile)
 router.put('/updateprofile',verifyToken,userController.updateUser)
 
-router.get('/admin/users', verifyToken, isAdmin, userController.getAllUsers)
-
+//router.get('/admin/users', verifyToken, isAdmin, userController.getAllUsers)
 router.delete('/users/:id', verifyToken, isAdmin, userController.deleteUser)
 router.get('/users/role/:id', verifyToken, isAdmin, userController.getUserRole)
 

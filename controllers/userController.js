@@ -214,25 +214,6 @@ userController.getAppointment = async (req, res) => {
 
 //ADMIN//
 
-//See all Users//
-
-userController.getAllUsers = async (req, res) => {
-    try {
-        const users = await User.findAll({
-            attributes: { exclude: ['password'] }
-        });
-
-        return res.json(users);
-    } catch (error) {
-        return res.status(500).json(    
-                {
-                success: false,
-                message:"Something went wrong",
-                error_message: error.message
-                }
-            )
-        }
-    }
 
     //Check Roles by id//
 
