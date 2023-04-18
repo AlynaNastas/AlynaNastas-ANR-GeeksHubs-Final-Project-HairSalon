@@ -13,6 +13,7 @@ appointController.createAppoint = async(req, res) => {
     try {
         const { stylist_id, service_id, date, comments } = req.body;
         const userId = req.userId;
+        //todo recuperar el client:id a través del user:id
         const newAppointment = {
             stylist_id,
             client_id : userId,

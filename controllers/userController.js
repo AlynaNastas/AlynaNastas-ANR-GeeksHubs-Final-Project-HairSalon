@@ -22,12 +22,17 @@ userController.createUser = async(req,res)=>{
             phone
         }
         const user = await User.create(newUser)
-
-
+// todo create client new register table clients
         await UserRole.create({
             user_id : user.id,
             role_id : 3
         })
+        
+        await Client.create({
+            id: user.id,
+            user_id : user.id,
+        })
+
 
         return res.json(user)
     }catch (error) {
@@ -74,6 +79,7 @@ userController.login = async(req,res)=>{
             'key',
             {expiresIn: '2h'}
         );
+        
         return res.json(token)
     }catch (error) {
         return res.status(500).json(    
@@ -90,6 +96,7 @@ userController.deleteUser = async(req, res) =>{
     try {
         const userId = req.params.id;
         const deleteUser = await User.destroy({where: {id: userId}})
+        
         return res.json(deleteUser);
     } catch (error) {
         return res.status(500).json(    
