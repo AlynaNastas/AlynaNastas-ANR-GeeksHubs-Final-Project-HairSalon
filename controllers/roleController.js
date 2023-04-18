@@ -64,6 +64,22 @@ roleController.addRole = async(req,res)=>{
             }
         }
     
+        roleController.deleteUser = async(req, res) =>{
+            try {
+                const userId = req.params.id;
+                const deleteUser = await User.destroy({where: {id: userId}})
+                
+                return res.json(deleteUser);
+            } catch (error) {
+                return res.status(500).json(    
+                    {
+                        success: false,
+                        message:"Something went wrong",
+                        error_message: error.message
+                    }
+                )
+            }
+        }
     
 
 module.exports = roleController;
