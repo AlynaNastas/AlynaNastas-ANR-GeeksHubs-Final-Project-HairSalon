@@ -8,7 +8,6 @@ const router = require ('express').Router();
 
 router.get('/appoint',appointController.getAppoint)
 router.post('/appoint', verifyToken, appointController.createAppoint)
-//router.delete('/appoint/:id', verifyToken, appointController.deleteAppointment)
 router.delete('/appoint/:id', verifyToken, appointController.deleteAppointment)
 
 

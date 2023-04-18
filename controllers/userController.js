@@ -91,7 +91,7 @@ userController.deleteUser = async(req, res) =>{
         const userId = req.params.id;
         const deleteUser = await User.destroy({where: {id: userId}})
         return res.json(deleteUser);
-    } catch (erro) {
+    } catch (error) {
         return res.status(500).json(    
             {
                 success: false,
@@ -109,7 +109,7 @@ userController.profile = async(req, res) => {
         const user = await User.findByPk(userId)
 
         return res.json(user);
-    } catch (erro) {
+    } catch (error) {
         return res.status(500).json(    
             {
                 success: false,
@@ -188,7 +188,7 @@ userController.getStylistApp = async (req, res) => {
             })
 
             return res.json(stylistAppointment);
-        } catch (erro) {
+        } catch (error) {
             return res.status(500).json(    
                 {
                     success: false,
@@ -233,7 +233,7 @@ userController.getAppointment = async (req, res) => {
     });
 
     return res.json(userAppointment);
-        } catch (erro) {
+        } catch (error) {
             return res.status(500).json(    
                 {
                     success: false,
@@ -258,7 +258,7 @@ userController.getAllUsers = async (req, res) => {
         });
 
         return res.json(users);
-    } catch (erro) {
+    } catch (error) {
         return res.status(500).json(    
                 {
                 success: false,
@@ -285,7 +285,7 @@ userController.getAllUsers = async (req, res) => {
                 attributes: { exclude: ['password'] },
             });
             return res.json(stylists);
-        } catch (erro) {
+        } catch (error) {
             return res.status(500).json(    
                     {
                     success: false,
@@ -309,7 +309,7 @@ userController.getAllUsers = async (req, res) => {
             const uRoles = await UserRole.create(addRole)
     
             return res.json(uRoles);
-        } catch (erro) {
+        } catch (error) {
             return res.status(500).json(    
                     {
                     success: false,
@@ -332,7 +332,7 @@ userController.getAllUsers = async (req, res) => {
                 attributes: {exclude: ['password']}
             })
             return res.json(Userrole);
-        } catch (erro) {
+        } catch (error) {
             return res.status(500).json(    
                     {
                     success: false,

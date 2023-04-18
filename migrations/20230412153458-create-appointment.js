@@ -33,8 +33,8 @@ module.exports = {
           model: "Services",
           key:"id"
         },
-         onUpdate: 'CASCADE',
-         onDelete: 'CASCADE'
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
       },
       date: {
         type: Sequelize.STRING

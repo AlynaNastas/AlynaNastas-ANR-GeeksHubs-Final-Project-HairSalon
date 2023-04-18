@@ -1,7 +1,7 @@
 'use strict';
 const bcrypt = require('bcrypt');
 
-const password = "codeword"
+const password = "123456"
 const encryptedPassword = bcrypt.hashSync(password,12);
 
 

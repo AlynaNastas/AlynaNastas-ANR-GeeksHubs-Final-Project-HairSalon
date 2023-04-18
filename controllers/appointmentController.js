@@ -1,4 +1,4 @@
-const {Appointment } = require('../models');
+const { Appointment } = require('../models');
 
 const appointController = {}
 
@@ -22,7 +22,7 @@ appointController.createAppoint = async(req, res) => {
         }
         const appointment = await Appointment.create(newAppointment)
         return res.json(appointment);
-    } catch (erro) {
+    } catch (error) {
         return res.status(500).json(    
                 {
                 success: false,
