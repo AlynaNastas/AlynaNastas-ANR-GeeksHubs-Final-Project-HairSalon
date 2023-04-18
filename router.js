@@ -3,7 +3,7 @@ const router = require('express').Router();
 const roleRoutes = require('./views/roleRoutes');
 const userRoutes = require('./views/userRoutes');
 const stylistRoutes = require('./views/stylistRoutes');
-const appointmentRoutes = require('./views/appointmentRoutes')
+const appointmentRoutes = require('./views/appointmentRoutes');
 
 
 

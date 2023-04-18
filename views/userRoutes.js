@@ -19,7 +19,8 @@ router.delete('/users/:id', verifyToken, isAdmin, userController.deleteUser)
 router.get('/users/role/:id', verifyToken, isAdmin, userController.getUserRole)
 
 router.get('/admin/stylist', verifyToken, isStylist, userController.getUser)
-router.get('/stylist/app', verifyToken, isStylist, userController.getStylistApp)
+
+
 
 
 
