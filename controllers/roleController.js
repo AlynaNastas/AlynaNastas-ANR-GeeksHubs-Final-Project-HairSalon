@@ -22,4 +22,28 @@ roleController.createRole = async(req,res)=>{
     }
 }
 
+roleController.addRole = async(req,res)=>{
+    try{
+        const {user_id, role_id} = req.body;
+
+        const addRole = {
+            user_id,
+            role_id
+        }
+        
+        const uRoles = await UserRole.create(addRole)
+
+        return res.json(uRoles);
+    } catch (error) {
+        return res.status(500).json(    
+                {
+                success: false,
+                message:"Something went wrong",
+                error_message: error.message
+                }
+            )
+        }
+    }
+
+
 module.exports = roleController;

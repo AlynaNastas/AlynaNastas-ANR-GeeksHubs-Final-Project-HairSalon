@@ -1,4 +1,4 @@
-const {User, Role, UserRole, Client, Appointment, Service, Stylist} = require('../models');
+const {User, Role, UserRole, Client, Appointment, Service} = require('../models');
 const userController = {}
 
 const bcrypt = require('bcrypt');
@@ -22,12 +22,12 @@ userController.createUser = async(req,res)=>{
             phone
         }
         const user = await User.create(newUser)
-// todo create client new register table clients
+
         await UserRole.create({
             user_id : user.id,
             role_id : 3
         })
-        
+
         await Client.create({
             id: user.id,
             user_id : user.id,
@@ -304,29 +304,6 @@ userController.getAllUsers = async (req, res) => {
         }
     
 
-    userController.addRole = async(req,res)=>{
-        try{
-            const {user_id, role_id} = req.body;
-    
-            const addRole = {
-                user_id,
-                role_id
-            }
-            
-            const uRoles = await UserRole.create(addRole)
-    
-            return res.json(uRoles);
-        } catch (error) {
-            return res.status(500).json(    
-                    {
-                    success: false,
-                    message:"Something went wrong",
-                    error_message: error.message
-                    }
-                )
-            }
-        }
-    
 
     //Check Roles by id//
 

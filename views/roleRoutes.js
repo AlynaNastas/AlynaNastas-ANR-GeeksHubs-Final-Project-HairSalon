@@ -4,5 +4,6 @@ const isAdmin = require('../middlewares/isAdmin');
 const router = require ('express').Router();
 
 router.post('/roles', verifyToken, isAdmin, roleController.createRole)
+router.post('/admin/roles', verifyToken, isAdmin, roleController.addRole)
 
 module.exports = router;
