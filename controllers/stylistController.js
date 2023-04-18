@@ -46,6 +46,33 @@ stylistController.getStylistApp = async (req, res) => {
     }
 
 
+    //See all Stylists and Admin//
+
+    stylistController.getUser = async (req, res) => {
+        try {
+            const stylists = await User.findAll({
+                include: [
+                    {
+                    model: Role,
+                    where: {
+                        privilege: "User",
+                        },
+                    },
+                ],
+                attributes: { exclude: ['password'] },
+            });
+            return res.json(stylists);
+        } catch (error) {
+            return res.status(500).json(    
+                    {
+                    success: false,
+                    message:"Something went wrong",
+                    error_message: error.message
+                    }
+                )
+            }
+        }
+    
 
 
 module.exports = stylistController;

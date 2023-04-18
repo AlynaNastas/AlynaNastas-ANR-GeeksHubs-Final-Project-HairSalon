@@ -234,35 +234,6 @@ userController.getAllUsers = async (req, res) => {
         }
     }
 
-    //See all Stylists and Admin//
-
-    userController.getUser = async (req, res) => {
-        try {
-            const stylists = await User.findAll({
-                include: [
-                    {
-                    model: Role,
-                    where: {
-                        privilege: "User",
-                        },
-                    },
-                ],
-                attributes: { exclude: ['password'] },
-            });
-            return res.json(stylists);
-        } catch (error) {
-            return res.status(500).json(    
-                    {
-                    success: false,
-                    message:"Something went wrong",
-                    error_message: error.message
-                    }
-                )
-            }
-        }
-    
-
-
     //Check Roles by id//
 
     userController.getUserRole = async(req, res) =>{
