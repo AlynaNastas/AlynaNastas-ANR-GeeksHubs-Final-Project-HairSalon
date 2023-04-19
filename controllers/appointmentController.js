@@ -6,8 +6,6 @@ appointController.getAppoint = (req, res) => {
   res.status(200).send("All running okay");
 };
 
-//Just Users//
-
 appointController.createAppoint = async (req, res) => {
   try {
     const { stylist_id, service_id, date, comments } = req.body;
@@ -31,46 +29,6 @@ appointController.createAppoint = async (req, res) => {
   }
 };
 
-//Delete appointments Uers and Stylists//
-
-/*appointController.deleteAppointment = async (req, res) => {
-    try {
-        const appointId = req.params.id;
-        const userId = req.userId;
-        const userRoles = req.roles;
-        
-
-        let appointment;
-
-        if (userRoles.includes("Stylist")) {
-            appointment = await Appointment.findOne({
-                where: {
-                    id: appointId,
-                    stylist_id: userId
-                }
-            });
-        } else {
-            appointment = await Appointment.findOne({
-                where: {
-                    id: appointId,
-                    client_id: clientId
-                }
-            });
-        }
-
-        if (!appointment) {
-            return res.status(501).send('Appointment not found');
-        }
-
-        await appointment.destroy();
-
-        return res.send('Appointment deleted');
-
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-};*/
-
 appointController.deleteAppointment = async (req, res) => {
   try {
     const appointmentId = req.params.id;
@@ -92,45 +50,43 @@ appointController.deleteAppointment = async (req, res) => {
   }
 };
 
-//USERS FUNCTIONS
-
 appointController.seeAppointment = async (req, res) => {
-    try {
-      const userAppointment = await Appointment.findAll({
-        where: {
-          client_id: req.userId,
+  try {
+    const userAppointment = await Appointment.findAll({
+      where: {
+        client_id: req.userId,
+      },
+      include: [
+        {
+          model: Service,
+          attributes: { exclude: ["createdAt", "updatedAt"] },
         },
-        include: [
-          {
-            model: Service,
-            attributes: { exclude: ["createdAt", "updatedAt"] },
-          },
-          {
-            model: Client,
-            include: [
-              {
-                model: User,
-                attributes: ["name", "surname"],
-              },
-            ],
-            attributes: {
-              exclude: ["user_id", "role_id", "createdAt", "updatedAt"],
+        {
+          model: Client,
+          include: [
+            {
+              model: User,
+              attributes: ["name", "surname"],
             },
+          ],
+          attributes: {
+            exclude: ["user_id", "role_id", "createdAt", "updatedAt"],
           },
-        ],
-        attributes: {
-          exclude: ["client_id", "service_id"],
         },
-      });
-  
-      return res.json(userAppointment);
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: "Something went wrong",
-        error_message: error.message,
-      });
-    }
-  };
+      ],
+      attributes: {
+        exclude: ["client_id", "service_id"],
+      },
+    });
+
+    return res.json(userAppointment);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
 module.exports = appointController;

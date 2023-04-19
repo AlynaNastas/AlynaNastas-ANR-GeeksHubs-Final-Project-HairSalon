@@ -5,8 +5,6 @@ const stylistController = {};
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-//Stylist see them own appointments//
-
 stylistController.getStylistApp = async (req, res) => {
   try {
     const stylistAppointment = await Appointment.findAll({
@@ -39,8 +37,6 @@ stylistController.getStylistApp = async (req, res) => {
     });
   }
 };
-
-//See all Stylists and Admin//
 
 stylistController.getUser = async (req, res) => {
   try {

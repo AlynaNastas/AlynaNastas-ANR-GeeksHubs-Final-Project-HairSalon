@@ -22,17 +22,10 @@ roleController.createRole = async (req, res) => {
 
 roleController.deleteRole = async (req, res) => {
   try {
-    const { privilege } = req.body;
+    const roleId = req.params.id;
+    const deleteRole = await Role.destroy({ where: { id: roleId } });
 
-    const newPrivilage = {
-      privilege,
-    };
-
-    const role = await Role.destroy({
-        where: { id: role, role_id: req.roles },
-      });
-
-    return res.json(role);
+    return res.json(deleteRole);
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -43,34 +36,33 @@ roleController.deleteRole = async (req, res) => {
 };
 
 roleController.updateRoles = async (req, res) => {
-    try {
-        const { privilege } = req.body;
-        const role =  req.params.id;
+  try {
+    const { privilege } = req.body;
+    const role = req.params.id;
 
-
-      const updateRole = await Role.update(
-        {
-            privilege: privilege
+    const updateRole = await Role.update(
+      {
+        privilege: privilege,
+      },
+      {
+        where: {
+          id: role,
         },
-        {
-          where: {
-            id : role,
-          },
-        }
-      );
-  
-      if (!updateRole) {
-        return res.send("Role not updated");
       }
-      return res.send("Role updated");
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: "Something went wrong",
-        error_message: error.message,
-      });
+    );
+
+    if (!updateRole) {
+      return res.send("Role not updated");
     }
-  };
+    return res.send("Role updated");
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error_message: error.message,
+    });
+  }
+};
 
 roleController.addRole = async (req, res) => {
   try {
@@ -93,6 +85,8 @@ roleController.addRole = async (req, res) => {
   }
 };
 
+//users
+
 roleController.getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll({
@@ -113,6 +107,18 @@ roleController.deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
     const deleteUser = await User.destroy({ where: { id: userId } });
+
+    const existUser = await User.findOne({
+      where: {
+        id: userId,
+      },
+    });
+    if (!existUser) {
+      return res.status(501).json({
+        success: true,
+        message: "User not found",
+      });
+    }
 
     return res.json(deleteUser);
   } catch (error) {
