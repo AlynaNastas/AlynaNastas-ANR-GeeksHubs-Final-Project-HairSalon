@@ -1,11 +1,4 @@
-const {
-  User,
-  Role,
-  UserRole,
-  Client,
-  Appointment,
-  Service,
-} = require("../models");
+const { User, Role, Client, Appointment, Service } = require("../models");
 
 const stylistController = {};
 

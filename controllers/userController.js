@@ -1,11 +1,4 @@
-const {
-  User,
-  Role,
-  UserRole,
-  Client,
-  Appointment,
-  Service,
-} = require("../models");
+const { User, Role, UserRole, Client } = require("../models");
 const userController = {};
 
 const bcrypt = require("bcrypt");
@@ -139,44 +132,5 @@ userController.updateUser = async (req, res) => {
     });
   }
 };
-
-/*userController.seeAppointment = async (req, res) => {
-  try {
-    const userAppointment = await Appointment.findAll({
-      where: {
-        client_id: req.userId,
-      },
-      include: [
-        {
-          model: Service,
-          attributes: { exclude: ["createdAt", "updatedAt"] },
-        },
-        {
-          model: Client,
-          include: [
-            {
-              model: User,
-              attributes: ["name", "surname"],
-            },
-          ],
-          attributes: {
-            exclude: ["user_id", "role_id", "createdAt", "updatedAt"],
-          },
-        },
-      ],
-      attributes: {
-        exclude: ["client_id", "service_id"],
-      },
-    });
-
-    return res.json(userAppointment);
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Something went wrong",
-      error_message: error.message,
-    });
-  }
-};*/
 
 module.exports = userController;

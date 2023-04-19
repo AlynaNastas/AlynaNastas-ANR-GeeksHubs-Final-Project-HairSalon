@@ -10,6 +10,7 @@ router.delete('/delete/role', verifyToken, isAdmin, roleController.deleteRole)
 
 router.get('/admin/users', verifyToken, isAdmin, roleController.getAllUsers)
 router.delete('/users/:id', verifyToken, isAdmin, roleController.deleteUser)
+router.put('/roles/:id', verifyToken, isAdmin, roleController.updateRoles)
 
 
 

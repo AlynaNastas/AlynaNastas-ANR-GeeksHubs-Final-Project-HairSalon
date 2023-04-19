@@ -27,10 +27,10 @@ roleController.deleteRole = async (req, res) => {
     const newPrivilage = {
       privilege,
     };
-    const role = await Role.destroy(newPrivilage)({
-      where: { id: role },
-      truncate: true,
-    });
+
+    const role = await Role.destroy({
+        where: { id: role, role_id: req.roles },
+      });
 
     return res.json(role);
   } catch (error) {
@@ -41,6 +41,36 @@ roleController.deleteRole = async (req, res) => {
     });
   }
 };
+
+roleController.updateRoles = async (req, res) => {
+    try {
+        const { privilege } = req.body;
+        const role =  req.params.id;
+
+
+      const updateRole = await Role.update(
+        {
+            privilege: privilege
+        },
+        {
+          where: {
+            id : role,
+          },
+        }
+      );
+  
+      if (!updateRole) {
+        return res.send("Role not updated");
+      }
+      return res.send("Role updated");
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "Something went wrong",
+        error_message: error.message,
+      });
+    }
+  };
 
 roleController.addRole = async (req, res) => {
   try {
