@@ -14,9 +14,9 @@ module.exports = {
         unique: true,
         references: {
           model: "Users",
-          key:"id"
-        } 
-    
+          key: "id"
+        }
+
       },
       createdAt: {
         allowNull: false,

@@ -13,28 +13,28 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: "Stylists",
-          key:"id"
+          key: "id"
         },
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       client_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "Clients",
-          key:"id"
+          key: "id"
         },
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       service_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "Services",
-          key:"id"
+          key: "id"
         },
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       date: {
         type: Sequelize.STRING
