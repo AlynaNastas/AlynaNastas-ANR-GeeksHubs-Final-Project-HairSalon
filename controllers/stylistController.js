@@ -1,4 +1,4 @@
-const { User, Role, Client, Appointment, Service } = require("../models");
+const { User, Role, Client, Appointment, Service, Stylist } = require("../models");
 
 const stylistController = {};
 
@@ -60,5 +60,6 @@ stylistController.getUser = async (req, res) => {
         });
     }
 };
+
 
 module.exports = stylistController;

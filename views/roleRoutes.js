@@ -12,5 +12,6 @@ router.delete("/delete/role/:id", verifyToken, isAdmin, roleController.deleteRol
 router.get("/admin/users", verifyToken, isAdmin, roleController.getAllUsers);
 router.delete("/users/:id", verifyToken, isAdmin, roleController.deleteUser);
 router.put("/roles/:id", verifyToken, isAdmin, roleController.updateRoles);
+router.get("/admin/app", verifyToken, isAdmin, roleController.getStylistApp);
 
 module.exports = router;
