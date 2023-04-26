@@ -66,6 +66,8 @@ userController.login = async (req, res) => {
             {
                 userId: user.id,
                 email: user.email,
+                name: user.name,
+                phone: user.phone,
                 roles: userRoles.map((role) => role.privilege),
             },
             "key",
@@ -106,11 +108,11 @@ userController.updateUser = async (req, res) => {
 
         const updateUSer = await User.update(
             {
-                name,
-                surname,
-                email,
-                password: encryptedPassword,
-                birth_date,
+                // name,
+                // surname,
+                // email,
+                // password: encryptedPassword,
+                //birth_date,
                 phone,
             },
             {

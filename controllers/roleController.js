@@ -107,7 +107,12 @@ roleController.getAllUsers = async (req, res) => {
 roleController.deleteUser = async (req, res) => {
     try {
         const userId = req.params.id;
-        const deleteUser = await User.destroy({ where: { id: userId } });
+        const deleteUser = await User.destroy({ where: 
+            { 
+                id: userId 
+            
+            },
+        });
 
         const existUser = await User.findOne({
             where: {
@@ -181,5 +186,27 @@ roleController.getStylistApp = async (req, res) => {
         });
     }
 };
+
+roleController.deleteAppointm = async (req, res) => {
+    try {
+        const appointmentId = req.params.id;
+        const deleteAppoint = await Appointment.destroy({
+            where: { id: appointmentId },
+        });
+
+        return res.json({
+            success: true,
+            message: "Successfuly canceled",
+            appointment: deleteAppoint,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong",
+            error_message: error.message,
+        });
+    }
+};
+
 
 module.exports = roleController;
