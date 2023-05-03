@@ -55,5 +55,6 @@ view their own profile.
 > **Note**
 > I created more endpoints on Postman but just could bring up those functionalities on the frontend.
 
-> **warning**
-> this is 
+
+ ## Database diagram :memo:
+:pencil:
