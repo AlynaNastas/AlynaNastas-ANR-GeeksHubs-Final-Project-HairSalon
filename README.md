@@ -12,3 +12,24 @@
     <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
 </a>
  </div>
+
+## ℹ️ How It Works
+
+
+- Logged Users:
+book appointments using interactive datepicker.
+can cancel appointments.
+can see their own appointments.
+can update their profile.
+view their own profile.
+
+- Stylists (user role):
+view all appointments.
+view all costumers.
+view their own profile.
+
+
+- Admin:
+deletes appointments;
+view all users of the salon (not just costumers).
+view their own profile.
