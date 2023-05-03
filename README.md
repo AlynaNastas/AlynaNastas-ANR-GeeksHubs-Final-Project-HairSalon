@@ -20,9 +20,9 @@
 
 - Logged Users:
 
-**book appointments using interactive datepicker.
+** book appointments using interactive datepicker.
 
-**can cancel appointments.
+** can cancel appointments.
 
 * can see their own appointments.
 
