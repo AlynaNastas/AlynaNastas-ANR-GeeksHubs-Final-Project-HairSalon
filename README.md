@@ -54,3 +54,5 @@ view their own profile.
 
 > [!NOTE]
 > This is a note. 
+
+*Info
