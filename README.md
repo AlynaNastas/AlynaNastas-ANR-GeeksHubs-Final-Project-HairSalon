@@ -53,7 +53,7 @@ view their own profile.
 - Reviews
 
 > **Note**
-> This is a note
+> I created more endpoints on Postman but just could bring up those functionalities on the frontend.
 
 > **warning**
-this is 
+> this is 
