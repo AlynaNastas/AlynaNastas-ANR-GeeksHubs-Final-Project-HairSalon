@@ -51,3 +51,6 @@ view their own profile.
 - Services
 - Treatments
 - Reviews
+
+> [!NOTE]
+> This is a note. 
