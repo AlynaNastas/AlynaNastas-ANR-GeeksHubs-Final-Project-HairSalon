@@ -15,6 +15,8 @@
 
 ## ℹ️ How It Works
 
+- Login.
+- Logout.
 
 - Logged Users:
 
@@ -44,3 +46,8 @@ deletes appointments.
 view all users of the salon (not just costumers).
 
 view their own profile.
+
+- Home
+- Services
+- Treatments
+- Reviews
