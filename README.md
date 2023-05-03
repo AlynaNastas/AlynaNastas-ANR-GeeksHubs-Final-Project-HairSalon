@@ -52,7 +52,7 @@ view their own profile.
 - Treatments
 - Reviews
 
-> [!NOTE]
-> This is a note. 
+> **Note**
+> This is a note
 
 * Info
