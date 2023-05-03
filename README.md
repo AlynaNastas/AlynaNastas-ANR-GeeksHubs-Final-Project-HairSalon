@@ -17,19 +17,30 @@
 
 
 - Logged Users:
+
 book appointments using interactive datepicker.
+
 can cancel appointments.
+
 can see their own appointments.
+
 can update their profile.
+
 view their own profile.
 
+
 - Stylists (user role):
+
 view all appointments.
+
 view all costumers.
+
 view their own profile.
 
 
 - Admin:
-deletes appointments;
+deletes appointments.
+
 view all users of the salon (not just costumers).
+
 view their own profile.
