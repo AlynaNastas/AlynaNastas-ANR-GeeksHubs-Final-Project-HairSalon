@@ -52,6 +52,15 @@
 ![endpoints](https://user-images.githubusercontent.com/121962750/236151029-4a2933f9-595b-4d06-8f90-d4b99e188713.png)
 
 
+## About The Application
+
+  - It is built with Node.js and Express Framework with Javascript. In addition, the applications database is MySQL, with the use of mysql2 library.
+
+  - In the applicaiton we can manage user data, such as create/edit/delete a user or an appointment. In addition, we can get all the users in the database.
+
+
+
+
 ## ⚒️ Built With
 
 - Node.js
