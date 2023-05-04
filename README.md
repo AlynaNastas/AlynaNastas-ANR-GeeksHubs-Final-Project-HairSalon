@@ -66,7 +66,7 @@ A node.js API server for MySQL - It can perform CRUD (Create, Read, Update, Dele
 
 
 
-## ⚒️ Tools
+## ⚒️ Stack Tech
 
 - Node.js
 - Express
@@ -75,6 +75,11 @@ A node.js API server for MySQL - It can perform CRUD (Create, Read, Update, Dele
 - Docker
 - MySQL Workbench
 - Postman
+- VSCode
+- Sequelize ORM
+- NPM
+- Axios
+
 
 ## 	:round_pushpin: Dependencies
 
