@@ -114,6 +114,21 @@ This project is the creation of the back end for a Hair Salon site. This applica
   - /admin/appoint/70
   - /users/role/6
 
+## Postman
+
+- Install [Postman](https://www.postman.com/downloads/) to interact with REST API
+- Login with:
+  - URL: http://localhost:4000/users/login
+  - Method: POST
+  - Body: raw + JSON (application/json)
+  - Body Content: {  "email": maddie@malou.com", "password":" - - - - - " }
+
+- See appontments:
+  - URL: http://localhost:4000/appointmets
+  - Method: GET
+
+
+
 
 
 
