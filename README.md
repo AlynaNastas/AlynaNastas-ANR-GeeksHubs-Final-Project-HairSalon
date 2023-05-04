@@ -1,7 +1,7 @@
 # Final Project - Hair & Beauty Salon :scissors:
 ## Node.js Express REST API MySQL database project :paperclips:
 
-A node.js API server for MySQL - It can perform CRUD (Create, Read, Update, Delete) operations using HTTP Methods (POST, GET, PUT, and DELETE) for RESTful Services.
+This project is the creation of the back end for a Hair Salon site. This application used Express.js API and Sequelize to interact with a MySQL database. This application displays creation of database using mySQL with models and associations. Then demonstrates the API Routes to perform RESTful CRUD operations. It can perform CRUD (Create, Read, Update, Delete) operations using HTTP Methods (POST, GET, PUT, and DELETE) for RESTful Services.
 
 
 
