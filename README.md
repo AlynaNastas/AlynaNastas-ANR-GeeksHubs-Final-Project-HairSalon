@@ -46,10 +46,18 @@
 - Reviews
 
 > **Note**
-> I created more endpoints on Postman but just could bring up those functionalities on the frontend.
+> Those are the final functionalities (Frontend). I have created a total of 19 endpoints on the Backend.
+
+
+![endpoints](https://user-images.githubusercontent.com/121962750/236151029-4a2933f9-595b-4d06-8f90-d4b99e188713.png)
+
+
+
 
 
  ## Database diagram :memo:
 
+<div align="center">
 ![Captura de Pantalla 2023-04-12 a las 17 42 31](https://user-images.githubusercontent.com/121962750/236038206-f7e40df0-c1a1-47b3-b609-d7e5d94ddb68.png)
+ </div>
 
