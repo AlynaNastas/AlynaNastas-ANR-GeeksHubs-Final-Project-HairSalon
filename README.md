@@ -152,4 +152,4 @@ This project is the creation of the back end for a Hair Salon site. This applica
 
 ## License
 
-This project is licensed under the [MIT License]https://github.com/marinakolova/BeautyBooking/blob/master/LICENSE
+This project is licensed under the [MIT License](https://github.com/marinakolova/BeautyBooking/blob/master/LICENSE)
