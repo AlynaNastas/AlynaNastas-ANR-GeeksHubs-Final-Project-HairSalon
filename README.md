@@ -57,7 +57,6 @@
 
  ## Database diagram :memo:
 
-<div align="center">
 ![Captura de Pantalla 2023-04-12 a las 17 42 31](https://user-images.githubusercontent.com/121962750/236038206-f7e40df0-c1a1-47b3-b609-d7e5d94ddb68.png)
- </div>
+
 
