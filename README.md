@@ -1,6 +1,11 @@
 # Final Project - Hair & Beauty Salon :scissors:
 ## Node.js Express REST API MySQL database project :paperclips:
 
+A node.js API server for MySQL - It can perform CRUD (Create, Read, Update, Delete) operations using HTTP Methods (POST, GET, PUT, and DELETE) for RESTful Services.
+
+
+
+
 <div align="center">
 <a href="https://www.expressjs.com/">
     <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
