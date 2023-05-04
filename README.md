@@ -18,17 +18,17 @@
 - Login.
 - Logout.
 
-- Logged Users:
 
-** book appointments using interactive datepicker.
+1. Logged Users:
+     - book appointments using interactive datepicker.
+     - can cancel appointments.
+     - can see their own appointments.
+     - can update their profile.
+     - view their own profile.
 
-** can cancel appointments.
 
-* can see their own appointments.
 
-*can update their profile.
 
-*view their own profile.
 
 
 - Stylists (user role):
