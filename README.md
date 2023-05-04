@@ -95,8 +95,24 @@ This project is the creation of the back end for a Hair Salon site. This applica
 
 ## Requirements
 
- - [node & npm](https://nodejs.org/en).
- - [git](https://www.robinwieruch.de/git-essential-commands/).
+ - [node & npm](https://nodejs.org/en)
+ - [git](https://www.robinwieruch.de/git-essential-commands/)
+
+## Instalations
+
+- git clone [git@github.com:rwieruch/node-express-server-rest-api.git](https://github.com/AlynaNastas/ANR-GeeksHubs-Final-Project-HairSalon.git)
+- cd HairSalon
+- npm install
+- npm start
+- optional: include _.env_ in your _.gitignore_
+
+## GET Routes
+
+- http://localhost:4000
+  - /users/login
+  - /updateprofile
+  - /admin/appoint/70
+  - /users/role/6
 
 
 
