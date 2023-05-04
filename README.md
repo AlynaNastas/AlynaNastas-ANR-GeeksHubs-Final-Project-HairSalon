@@ -128,11 +128,11 @@ This project is the creation of the back end for a Hair Salon site. This applica
   - Method: GET
 
 
-## Issues and solutions
+## Issues and solutions
 
-   **Issue:  > I can not bring Stylist name to the front end.
+   - Issue: I can not bring Stylist name to the front end.
 
-   **Solution: > I would need to bring data through different tables doing "joins" between the tables.
+   - Solution: I would need to bring data through different tables doing "joins" between the tables.
 
 
 
