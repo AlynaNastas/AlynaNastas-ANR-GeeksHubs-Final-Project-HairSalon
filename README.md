@@ -149,3 +149,13 @@ This project is the creation of the back end for a Hair Salon site. This applica
 ## License
 
 This project is licensed under the [MIT License](https://github.com/marinakolova/BeautyBooking/blob/master/LICENSE)
+
+
+
+## Contact
+
+:envelope_with_arrow: Alyna Nastas Romaniuc
+
+![image](https://user-images.githubusercontent.com/121962750/227806286-eaf20a49-cee0-4cff-8f6d-f04b4dfcb873.png)
+![image](https://user-images.githubusercontent.com/121962750/227806305-5d5348e2-756b-432d-8f61-870eb09941e3.png)
+
