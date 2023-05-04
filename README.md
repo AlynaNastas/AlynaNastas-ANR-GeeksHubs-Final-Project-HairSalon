@@ -66,12 +66,15 @@ A node.js API server for MySQL - It can perform CRUD (Create, Read, Update, Dele
 
 
 
-## ⚒️ Built With
+## ⚒️ Tools
 
 - Node.js
 - Express
 - Cors
 - MySQL2
+- Docker
+- MySQL Workbench
+- Postman
 
 
 
