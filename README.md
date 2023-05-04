@@ -1,5 +1,5 @@
 # Final Project - Hair & Beauty Salon :scissors:
-## SQL Database project using Express and Node.js.
+## Node.js Express REST API MySQL database project :paperclips:
 
 <div align="center">
 <a href="https://www.expressjs.com/">
@@ -50,6 +50,14 @@
 
 
 ![endpoints](https://user-images.githubusercontent.com/121962750/236151029-4a2933f9-595b-4d06-8f90-d4b99e188713.png)
+
+
+⚒️ Built With
+
+- Node.js
+- Express
+- Cors
+- MySQL2
 
 
 
