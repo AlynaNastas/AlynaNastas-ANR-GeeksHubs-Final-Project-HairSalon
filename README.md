@@ -95,8 +95,8 @@ This project is the creation of the back end for a Hair Salon site. This applica
 
 ## Requirements
 
-[GitHub Pages](node & npm).
-[GitHub Pages](git).
+[](node & npm).
+[](git).
 
 
 
