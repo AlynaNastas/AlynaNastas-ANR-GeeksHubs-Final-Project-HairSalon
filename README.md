@@ -36,7 +36,7 @@
 
 3. Admin:
      - deletes appointments.
-     - view all users of the salon (not just costumers).
+     - view all users of the salon (not just costumers. Including Stylist and Admins).
      - view their own profile.
 
 
