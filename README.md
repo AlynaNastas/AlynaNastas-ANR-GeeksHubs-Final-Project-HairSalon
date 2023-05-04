@@ -128,6 +128,10 @@ This project is the creation of the back end for a Hair Salon site. This applica
   - Method: GET
 
 
+## Issues and solutions
+
+## -Issue get appointments and block past dates
+
 
 
 
