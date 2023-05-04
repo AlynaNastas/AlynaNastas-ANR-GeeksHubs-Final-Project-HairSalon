@@ -27,25 +27,18 @@
      - view their own profile.
 
 
+2. Stylists (user role):
+     - view all appointments.
+     - view all costumers.
+     - view their own profile.
+    
 
 
+3. Admin:
+     - deletes appointments.
+     - view all users of the salon (not just costumers).
+     - view their own profile.
 
-
-- Stylists (user role):
-
-view all appointments.
-
-view all costumers.
-
-view their own profile.
-
-
-- Admin:
-deletes appointments.
-
-view all users of the salon (not just costumers).
-
-view their own profile.
 
 - Home
 - Services
