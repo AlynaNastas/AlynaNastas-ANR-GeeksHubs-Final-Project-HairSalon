@@ -100,7 +100,7 @@ This project is the creation of the back end for a Hair Salon site. This applica
 
 ## Instalations
 
-- git clone [git@github.com:rwieruch/node-express-server-rest-api.git](https://github.com/AlynaNastas/ANR-GeeksHubs-Final-Project-HairSalon.git)
+- git clone [(https://github.com/AlynaNastas/ANR-GeeksHubs-Final-Project-HairSalon.git)]
 - cd HairSalon
 - npm install
 - npm start
