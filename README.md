@@ -93,6 +93,11 @@ This project is the creation of the back end for a Hair Salon site. This applica
  - sequelize: 6.31.0
  - sequelize-cli: 6.6.0
 
+## Requirements
+
+[GitHub Pages](node & npm).
+[GitHub Pages](git).
+
 
 
 
